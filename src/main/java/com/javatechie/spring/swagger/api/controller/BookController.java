@@ -23,8 +23,11 @@ import io.swagger.annotations.ApiResponse;
 @Api(value = "Book Service", description = "My Book Store")
 public class BookController {
 
-	@Autowired
-	private BookService service;
+	private final BookService service;
+
+	public BookController(BookService service) {
+		this.service = service;
+	}
 
 	@PostMapping("/save")
 	@ApiOperation(value = "store book api")

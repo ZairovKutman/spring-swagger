@@ -10,12 +10,15 @@ import com.javatechie.spring.swagger.api.model.Book;
 
 @Service
 public class BookService {
-	@Autowired
-	private BookRepository repository;
+	private final BookRepository repository;
+
+	public BookService(BookRepository repository) {
+		this.repository = repository;
+	}
 
 	public String saveBook(Book book) {
 		repository.save(book);
-		return "book save dwith id " + book.getBookId();
+		return "book save dwith id " + book +"";
 	}
 
 	public Book getBook(int bookId) {
